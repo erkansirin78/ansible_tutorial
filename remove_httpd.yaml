@@ -1,0 +1,14 @@
+---
+- name: update web servers
+  hosts: all
+  become: true
+  tasks:
+
+  - name: update yum repository
+    yum:
+      update_cache: yes
+
+  - name: install httpd and check it is latest
+    yum:
+      name: httpd
+      state: absent

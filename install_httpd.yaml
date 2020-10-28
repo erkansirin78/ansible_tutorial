@@ -1,0 +1,18 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: update yum repository
+    yum:
+      update_cache: yes
+    when: ansible_distribution == "CentOS"
+
+  - name: install httpd and php package for CentOS
+    yum:
+      name: 
+        - httpd
+        - php
+      state: latest
+    when: ansible_distribution == "CentOS"
